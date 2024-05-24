@@ -10,12 +10,20 @@ const char *vertexShaderSource = "#version 330 core\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
 
-const char *fragmentShaderSource = "#version 330 core\n"
+const char *fragmentShaderSource1 = "#version 330 core\n"
     "out vec4 FragColor;\n"
     "void main()\n"
     "{\n"
     "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
     "}\n\0";
+
+const char *fragmentShaderSource2 = "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = vec4(0.5f, 0.7f, 0.1f, 1.0f);\n"
+    "}\n\0";
+
 
 unsigned int *vertexInput()
 {
@@ -77,11 +85,29 @@ unsigned int compileVertexShader()
     return vertexShader;
 }
 
-unsigned int compileFragmentShader()
+unsigned int compileFragmentShader1()
 {
     unsigned int fragmentShader;
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource1, NULL);
+    glCompileShader(fragmentShader);
+
+    int  success;
+    char infoLog[512];
+    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
+    if(!success)
+    {
+        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
+    return fragmentShader;
+}
+
+unsigned int compileFragmentShader2()
+{
+    unsigned int fragmentShader;
+    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource2, NULL);
     glCompileShader(fragmentShader);
 
     int  success;
@@ -155,8 +181,10 @@ int main() {
 
 
     unsigned int vertexShader = compileVertexShader();
-    unsigned int fragmentShader = compileFragmentShader();
-    unsigned int shaderProgram = linkFragmentsToProgram(vertexShader, fragmentShader) ;
+    unsigned int fragmentShader1 = compileFragmentShader1();
+    unsigned int fragmentShader2 = compileFragmentShader2();
+    unsigned int shaderProgram1 = linkFragmentsToProgram(vertexShader, fragmentShader1) ;
+    unsigned int shaderProgram2 = linkFragmentsToProgram(vertexShader, fragmentShader2) ;
 
     unsigned int *VAOs = vertexInput();
 
@@ -167,10 +195,11 @@ int main() {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glUseProgram(shaderProgram);
+        glUseProgram(shaderProgram1);
         glBindVertexArray(VAOs[0]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
+        glUseProgram(shaderProgram2);
         glBindVertexArray(VAOs[1]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
