@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyCppProject)
+project(OpenGLTutorial)
 
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -14,10 +14,10 @@ target_include_directories(glad PUBLIC vendor/glad/include)
 find_package(glfw3 3.3 REQUIRED)
 
 # Add the executable
-add_executable(MyCppProject src/main.cpp)
+add_executable(OpenGLTutorial src/main.cpp)
 
 # Include directories for the main project
-target_include_directories(MyCppProject PRIVATE vendor/glad/include)
+target_include_directories(OpenGLTutorial PRIVATE vendor/glad/include)
 
 # Link libraries
-target_link_libraries(MyCppProject glad glfw)
+target_link_libraries(OpenGLTutorial glad glfw)
