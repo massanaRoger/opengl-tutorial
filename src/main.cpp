@@ -17,36 +17,47 @@ const char *fragmentShaderSource = "#version 330 core\n"
     "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
     "}\n\0";
 
-unsigned int vertexInput()
+unsigned int *vertexInput()
 {
+    float firstTriangle[] = {
+        -0.9f, -0.5f, 0.0f,  // left 
+        -0.0f, -0.5f, 0.0f,  // right
+        -0.45f, 0.5f, 0.0f,  // top 
+    };
+    float secondTriangle[] = {
+        0.0f, -0.5f, 0.0f,  // left
+        0.9f, -0.5f, 0.0f,  // right
+        0.45f, 0.5f, 0.0f   // top 
+    };
 
-    float vertices[] = {
-        -1.0f, -0.5f, 0.0f, // left  
-        0.0f, -0.5f, 0.0f, // right 
-        -0.5f,  0.5f, 0.0f,  // top   
-        0.0f, -0.5f, 0.0f, // left  
-        1.0f, -0.5f, 0.0f, // right 
-        0.5f,  0.5f, 0.0f  // top   
-    }; 
+    unsigned int VBOs[2];
+    unsigned int* VAOs = new unsigned int[2];
+    glGenVertexArrays(2, VAOs);
+    glGenBuffers(2, VBOs);
 
-    unsigned int VBO, VAO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
+    // first triangle setup
+    glBindVertexArray(VAOs[0]);
 
-    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(firstTriangle), firstTriangle, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
+
+    glBindVertexArray(VAOs[1]);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(secondTriangle), secondTriangle, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     glBindVertexArray(0);
 
-    return VAO;
+    return VAOs;
 }
 
 unsigned int compileVertexShader()
@@ -147,7 +158,7 @@ int main() {
     unsigned int fragmentShader = compileFragmentShader();
     unsigned int shaderProgram = linkFragmentsToProgram(vertexShader, fragmentShader) ;
 
-    unsigned int VAO = vertexInput();
+    unsigned int *VAOs = vertexInput();
 
     while(!glfwWindowShouldClose(window))
     {
@@ -157,13 +168,17 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glBindVertexArray(VAOs[0]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glBindVertexArray(VAOs[1]);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         glfwSwapBuffers(window);
         glfwPollEvents();    
     }
 
+    delete[] VAOs;
 
     glfwTerminate();
 
