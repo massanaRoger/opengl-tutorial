@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstddef>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -10,62 +11,40 @@ const char *vertexShaderSource = "#version 330 core\n"
     "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
     "}\0";
 
-const char *fragmentShaderSource1 = "#version 330 core\n"
+const char *fragmentShaderSource = "#version 330 core\n"
     "out vec4 FragColor;\n"
+    "uniform vec4 ourColor;\n"
     "void main()\n"
     "{\n"
-    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+    "   FragColor = ourColor;\n"
     "}\n\0";
 
-const char *fragmentShaderSource2 = "#version 330 core\n"
-    "out vec4 FragColor;\n"
-    "void main()\n"
-    "{\n"
-    "   FragColor = vec4(0.5f, 0.7f, 0.1f, 1.0f);\n"
-    "}\n\0";
-
-
-unsigned int *vertexInput()
+unsigned int vertexInput()
 {
-    float firstTriangle[] = {
-        -0.9f, -0.5f, 0.0f,  // left 
-        -0.0f, -0.5f, 0.0f,  // right
-        -0.45f, 0.5f, 0.0f,  // top 
-    };
-    float secondTriangle[] = {
-        0.0f, -0.5f, 0.0f,  // left
-        0.9f, -0.5f, 0.0f,  // right
-        0.45f, 0.5f, 0.0f   // top 
+    float triangle[] = {
+         0.5f, -0.5f, 0.0f,  // bottom right
+        -0.5f, -0.5f, 0.0f,  // bottom left
+         0.0f,  0.5f, 0.0f   // top 
     };
 
-    unsigned int VBOs[2];
-    unsigned int* VAOs = new unsigned int[2];
-    glGenVertexArrays(2, VAOs);
-    glGenBuffers(2, VBOs);
+    unsigned int VBO, VAO;
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
 
     // first triangle setup
-    glBindVertexArray(VAOs[0]);
+    glBindVertexArray(VAO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(firstTriangle), firstTriangle, GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glBindVertexArray(VAOs[1]);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBOs[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(secondTriangle), secondTriangle, GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(triangle), triangle, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     glBindVertexArray(0);
 
-    return VAOs;
+    return VAO;
 }
 
 unsigned int compileVertexShader()
@@ -85,11 +64,11 @@ unsigned int compileVertexShader()
     return vertexShader;
 }
 
-unsigned int compileFragmentShader1()
+unsigned int compileFragmentShader()
 {
     unsigned int fragmentShader;
     fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource1, NULL);
+    glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
     glCompileShader(fragmentShader);
 
     int  success;
@@ -103,23 +82,6 @@ unsigned int compileFragmentShader1()
     return fragmentShader;
 }
 
-unsigned int compileFragmentShader2()
-{
-    unsigned int fragmentShader;
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource2, NULL);
-    glCompileShader(fragmentShader);
-
-    int  success;
-    char infoLog[512];
-    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-    if(!success)
-    {
-        glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-    }
-    return fragmentShader;
-}
 
 unsigned int linkFragmentsToProgram(unsigned int vertexShader, unsigned int fragmentShader) {
     unsigned int shaderProgram;
@@ -181,12 +143,10 @@ int main() {
 
 
     unsigned int vertexShader = compileVertexShader();
-    unsigned int fragmentShader1 = compileFragmentShader1();
-    unsigned int fragmentShader2 = compileFragmentShader2();
-    unsigned int shaderProgram1 = linkFragmentsToProgram(vertexShader, fragmentShader1) ;
-    unsigned int shaderProgram2 = linkFragmentsToProgram(vertexShader, fragmentShader2) ;
+    unsigned int fragmentShader = compileFragmentShader();
+    unsigned int shaderProgram = linkFragmentsToProgram(vertexShader, fragmentShader) ;
 
-    unsigned int *VAOs = vertexInput();
+    unsigned int VAO = vertexInput();
 
     while(!glfwWindowShouldClose(window))
     {
@@ -195,19 +155,19 @@ int main() {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glUseProgram(shaderProgram1);
-        glBindVertexArray(VAOs[0]);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glUseProgram(shaderProgram);
 
-        glUseProgram(shaderProgram2);
-        glBindVertexArray(VAOs[1]);
+        float timeValue = glfwGetTime();
+        float greenValue = sin(timeValue) / 2.0f + 0.5f;
+        int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
+        glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+
+        glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
         glfwSwapBuffers(window);
         glfwPollEvents();    
     }
-
-    delete[] VAOs;
 
     glfwTerminate();
 
