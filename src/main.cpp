@@ -9,10 +9,10 @@
 unsigned int vertexInput() {
   float vertices[] = {
       // positions          // colors           // texture coords
-      0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 0.55f, 0.55f, // top right
-      0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.55f, 0.45f, // bottom right
-      -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.45f, 0.45f, // bottom left
-      -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.45f, 0.55f  // top left
+      0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
+      0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
+      -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
+      -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f  // top left
   };
 
   unsigned int indices[] = {
@@ -55,9 +55,17 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow *window) {
+void processInput(GLFWwindow *window, float *visibility) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
+  } else if (glfwGetKey(window, GLFW_KEY_UP)) {
+    if (*visibility < 1.0f) {
+      *visibility += 0.005f;
+    }
+  } else if (glfwGetKey(window, GLFW_KEY_DOWN)) {
+    if (*visibility > 0.0f) {
+      *visibility -= 0.005f;
+    }
   }
 }
 
@@ -68,8 +76,8 @@ unsigned int generateTexture1() {
   glBindTexture(GL_TEXTURE_2D, texture);
   // set the texture wrapping/filtering options (on the currently bound texture
   // object)
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_TEXTURE_WRAP_S);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_TEXTURE_WRAP_S);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,
                   GL_LINEAR_MIPMAP_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -148,11 +156,13 @@ int main() {
   shader.use();
   glUniform1i(glGetUniformLocation(shader.ID, "texture1"), 0);
   shader.setInt("texture2", 1);
+  float visibility = 0.2f;
+  shader.setFloat("visibility", visibility);
 
   unsigned int VAO = vertexInput();
 
   while (!glfwWindowShouldClose(window)) {
-    processInput(window);
+    processInput(window, &visibility);
 
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -162,6 +172,8 @@ int main() {
 
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture2);
+
+    shader.setFloat("visibility", visibility);
 
     shader.use();
 
