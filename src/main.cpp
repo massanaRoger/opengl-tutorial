@@ -1,4 +1,5 @@
 #include "Shader.hpp"
+#include "glm/ext/matrix_transform.hpp"
 #include "stb_image.hpp"
 #include <GLFW/glfw3.h>
 #include <cmath>
@@ -11,11 +12,11 @@
 
 unsigned int vertexInput() {
   float vertices[] = {
-      // positions          // colors           // texture coords
-      0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
-      0.5f,  -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
-      -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
-      -0.5f, 0.5f,  0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f  // top left
+      // positions        // texture coords
+      0.5f,  0.5f,  0.0f, 1.0f, 1.0f, // top right
+      0.5f,  -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
+      -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
+      -0.5f, 0.5f,  0.0f, 0.0f, 1.0f  // top left
   };
 
   unsigned int indices[] = {
@@ -38,16 +39,12 @@ unsigned int vertexInput() {
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices,
                GL_STATIC_DRAW);
 
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)0);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
-  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
+  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float),
                         (void *)(3 * sizeof(float)));
   glEnableVertexAttribArray(1);
-
-  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float),
-                        (void *)(6 * sizeof(float)));
-  glEnableVertexAttribArray(2);
 
   glBindVertexArray(0);
 
@@ -58,18 +55,10 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
   glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow *window, float *visibility) {
+void processInput(GLFWwindow *window) {
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
-  } else if (glfwGetKey(window, GLFW_KEY_UP)) {
-    if (*visibility < 1.0f) {
-      *visibility += 0.005f;
-    }
-  } else if (glfwGetKey(window, GLFW_KEY_DOWN)) {
-    if (*visibility > 0.0f) {
-      *visibility -= 0.005f;
-    }
-  }
+  } 
 }
 
 unsigned int generateTexture1() {
@@ -156,16 +145,16 @@ int main() {
   unsigned int texture2 = generateTexture2();
   Shader shader("../shaders/shader.vs", "../shaders/shader.fs");
 
+  // Do the rotation and scale the vector
   shader.use();
+    
   glUniform1i(glGetUniformLocation(shader.ID, "texture1"), 0);
   shader.setInt("texture2", 1);
-  float visibility = 0.2f;
-  shader.setFloat("visibility", visibility);
 
   unsigned int VAO = vertexInput();
 
   while (!glfwWindowShouldClose(window)) {
-    processInput(window, &visibility);
+    processInput(window);
 
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -176,9 +165,14 @@ int main() {
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture2);
 
-    shader.setFloat("visibility", visibility);
-
     shader.use();
+
+    glm::mat4 trans = glm::mat4(1.0f);
+    trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+    trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+    unsigned int transformLoc = glGetUniformLocation(shader.ID, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
