@@ -130,11 +130,11 @@ void processInput(GLFWwindow *window)
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
     glfwSetWindowShouldClose(window, true);
   } if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-    cameraPos = cameraPos + cameraSpeed * cameraFront;
+    cameraPos = cameraPos + cameraSpeed * glm::normalize(glm::vec3(cameraFront.x, 0.0, cameraFront.z));
   } if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
     cameraPos = cameraPos - cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
   } if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-    cameraPos = cameraPos - cameraSpeed * cameraFront;
+    cameraPos = cameraPos - cameraSpeed * glm::normalize(glm::vec3(cameraFront.x, 0.0, cameraFront.z));
   } if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
     cameraPos = cameraPos + cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
   }
