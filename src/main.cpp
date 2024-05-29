@@ -36,7 +36,12 @@ float lastFrame = 0.0f; // Time of last frame
 float lastX = 400, lastY = 300;
 float yaw = -90.0f, pitch = 0.0f;
 
-unsigned int vertexInput() {
+float fov = 45.0f;
+
+
+
+unsigned int vertexInput() 
+{
 
   float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -113,11 +118,13 @@ unsigned int vertexInput() {
   return VAO;
 }
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
+void framebuffer_size_callback(GLFWwindow *window, int width, int height) 
+{
   glViewport(0, 0, width, height);
 }
 
-void processInput(GLFWwindow *window) {
+void processInput(GLFWwindow *window) 
+{
   float cameraSpeed = 2.5f * deltaTime;
 
   if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -133,7 +140,8 @@ void processInput(GLFWwindow *window) {
   }
 }
 
-unsigned int generateTexture1() {
+unsigned int generateTexture1() 
+{
   unsigned int texture;
   glGenTextures(1, &texture);
   glActiveTexture(GL_TEXTURE_2D);
@@ -161,7 +169,8 @@ unsigned int generateTexture1() {
   return texture;
 }
 
-unsigned int generateTexture2() {
+unsigned int generateTexture2() 
+{
   unsigned int texture;
   glGenTextures(1, &texture);
   glActiveTexture(GL_TEXTURE_2D);
@@ -216,6 +225,15 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     cameraFront = glm::normalize(direction);
 }
 
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    fov -= (float)yoffset;
+    if (fov < 1.0f)
+        fov = 1.0f;
+    if (fov > 45.0f)
+        fov = 45.0f; 
+}
+
 int main() {
   glfwInit();
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -240,6 +258,7 @@ int main() {
   glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
   glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
   glfwSetCursorPosCallback(window, mouse_callback);
+  glfwSetScrollCallback(window, scroll_callback);
 
   unsigned int texture1 = generateTexture1();
   unsigned int texture2 = generateTexture2();
@@ -278,7 +297,7 @@ int main() {
     shader.setMat4("view", view);
 
     glm::mat4 projection;
-    projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+    projection = glm::perspective(glm::radians(fov), 800.0f / 600.0f, 0.1f, 100.0f);
     shader.setMat4("projection", projection);
 
     glBindVertexArray(VAO);
