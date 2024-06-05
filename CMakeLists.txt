@@ -10,8 +10,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_library(glad vendor/glad/src/glad.c)
 target_include_directories(glad PUBLIC vendor/glad/include)
 
-# Find GLFW package
-find_package(glfw3 3.3 REQUIRED)
+# Add GLFW library
+add_subdirectory(vendor/glfw)
+# GLFW's CMakeLists.txt should properly define a target named glfw or glfw3
 
 # Include glm directory
 include_directories(includes)
@@ -20,7 +21,7 @@ include_directories(includes)
 add_executable(OpenGLTutorial src/main.cpp src/Shader.cpp src/stb_image.cpp)
 
 # Include directories for the main project
-target_include_directories(OpenGLTutorial PRIVATE vendor/glad/include includes)
+target_include_directories(OpenGLTutorial PRIVATE vendor/glad/include includes vendor/glfw/include)
 
 # Link libraries
 target_link_libraries(OpenGLTutorial glad glfw)
