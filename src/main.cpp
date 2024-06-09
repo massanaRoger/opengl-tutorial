@@ -130,6 +130,13 @@ int main() {
         glm::vec3(1.3f, -2.0f, -2.5f),  glm::vec3(1.5f, 2.0f, -2.5f),
         glm::vec3(1.5f, 0.2f, -1.5f),   glm::vec3(-1.3f, 1.0f, -1.5f)};
 
+    glm::vec3 pointLightPositions[] = {
+	glm::vec3( 0.7f,  0.2f,  2.0f),
+	glm::vec3( 2.3f, -3.3f, -4.0f),
+	glm::vec3(-4.0f,  2.0f, -12.0f),
+	glm::vec3( 0.0f,  0.0f, -3.0f)
+};
+
     // first, configure the cube's VAO (and VBO)
     unsigned int VBO, cubeVAO;
     glGenVertexArrays(1, &cubeVAO);
@@ -241,6 +248,19 @@ int main() {
                 glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             lightingShader.setMat4("model", model);
 
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
+
+        for (unsigned int i = 0; i < 4; i++) {
+            lightCubeShader.use();
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, pointLightPositions[i]);
+
+            lightingShader.setMat4("model", model);
+            lightCubeShader.setMat4("projection", projection);
+            lightCubeShader.setMat4("view", view);
+
+            glBindVertexArray(lightVAO);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
