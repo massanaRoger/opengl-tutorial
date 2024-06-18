@@ -18,7 +18,8 @@ add_subdirectory(vendor/glfw)
 include_directories(includes)
 
 # Add the executable
-add_executable(OpenGLTutorial src/main.cpp src/Shader.cpp src/stb_image.cpp)
+add_executable(OpenGLTutorial src/main.cpp src/Shader.cpp src/stb_image.cpp
+        src/Mesh.cpp)
 
 # Include directories for the main project
 target_include_directories(OpenGLTutorial PRIVATE vendor/glad/include includes vendor/glfw/include)
