@@ -3,3 +3,4 @@ compile_commands.json
 .cache
 .vs
 vendor/assimp
+vcpkg

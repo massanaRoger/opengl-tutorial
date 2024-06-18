@@ -89,6 +89,9 @@ ASSIMP_INJECT_DEBUG_POSTFIX:BOOL=ON
 //Disable this if you want to use assimp as a submodule.
 ASSIMP_INSTALL:BOOL=ON
 
+//Path to a library.
+ASSIMP_LIBRARY:FILEPATH=ASSIMP_LIBRARY-NOTFOUND
+
 //Path for library output files
 ASSIMP_LIBRARY_OUTPUT_DIRECTORY:STRING=C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/vendor/assimp/bin
 
@@ -472,6 +475,15 @@ OpenGLTutorial_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 OpenGLTutorial_SOURCE_DIR:STATIC=C:/Users/Roger2/Documents/programming/opengl-tutorial
 
+//The directory containing a CMake configuration file for assimp-vc143-mt.
+assimp-vc143-mt_DIR:PATH=assimp-vc143-mt_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for assimp:x64-windows-static.
+"assimp:x64-windows-static_DIR":PATH=assimp:x64-windows-static_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for assimp.
+assimp_DIR:PATH=assimp_DIR-NOTFOUND
+
 //Value Computed by CMake
 zlib_BINARY_DIR:STATIC=C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/vendor/assimp/contrib/zlib
 
@@ -626,7 +638,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
