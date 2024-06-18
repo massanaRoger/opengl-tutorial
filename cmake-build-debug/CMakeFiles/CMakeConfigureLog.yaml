@@ -659,3 +659,164 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "vendor/assimp/contrib/zlib/CMakeLists.txt:35 (check_include_file)"
+    checks:
+      - "Looking for sys/types.h"
+    directories:
+      source: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-s4vmwq"
+      binary: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-s4vmwq"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Roger2/Documents/programming/opengl-tutorial/vendor/assimp/cmake-modules"
+    buildResult:
+      variable: "HAVE_SYS_TYPES_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-s4vmwq'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -v cmTC_b3272
+        [1/2] C:\\msys64\\mingw64\\bin\\cc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_b3272.dir/CheckIncludeFile.c.obj -c C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-s4vmwq/CheckIncludeFile.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\msys64\\mingw64\\bin\\cc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_b3272.dir/CheckIncludeFile.c.obj -o cmTC_b3272.exe -Wl,--out-implib,libcmTC_b3272.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "vendor/assimp/contrib/zlib/CMakeLists.txt:36 (check_include_file)"
+    checks:
+      - "Looking for stdint.h"
+    directories:
+      source: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pzygox"
+      binary: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pzygox"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Roger2/Documents/programming/opengl-tutorial/vendor/assimp/cmake-modules"
+    buildResult:
+      variable: "HAVE_STDINT_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pzygox'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -v cmTC_1fcf5
+        [1/2] C:\\msys64\\mingw64\\bin\\cc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_1fcf5.dir/CheckIncludeFile.c.obj -c C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pzygox/CheckIncludeFile.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\msys64\\mingw64\\bin\\cc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_1fcf5.dir/CheckIncludeFile.c.obj -o cmTC_1fcf5.exe -Wl,--out-implib,libcmTC_1fcf5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "vendor/assimp/contrib/zlib/CMakeLists.txt:37 (check_include_file)"
+    checks:
+      - "Looking for stddef.h"
+    directories:
+      source: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h77r7j"
+      binary: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h77r7j"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Roger2/Documents/programming/opengl-tutorial/vendor/assimp/cmake-modules"
+    buildResult:
+      variable: "HAVE_STDDEF_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h77r7j'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -v cmTC_f23a0
+        [1/2] C:\\msys64\\mingw64\\bin\\cc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_f23a0.dir/CheckIncludeFile.c.obj -c C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-h77r7j/CheckIncludeFile.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\msys64\\mingw64\\bin\\cc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_f23a0.dir/CheckIncludeFile.c.obj -o cmTC_f23a0.exe -Wl,--out-implib,libcmTC_f23a0.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckTypeSize.cmake:146 (try_compile)"
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckTypeSize.cmake:271 (__check_type_size_impl)"
+      - "vendor/assimp/contrib/zlib/CMakeLists.txt:55 (check_type_size)"
+    checks:
+      - "Check size of off64_t"
+    directories:
+      source: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rdos6p"
+      binary: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rdos6p"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Roger2/Documents/programming/opengl-tutorial/vendor/assimp/cmake-modules"
+    buildResult:
+      variable: "HAVE_OFF64_T"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rdos6p'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -v cmTC_048f3
+        [1/2] C:\\msys64\\mingw64\\bin\\cc.exe -DHAVE_STDDEF_H -DHAVE_STDINT_H -DHAVE_SYS_TYPES_H -D_LARGEFILE64_SOURCE=1  -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_048f3.dir/OFF64_T.c.obj -c C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-rdos6p/OFF64_T.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\msys64\\mingw64\\bin\\cc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_048f3.dir/OFF64_T.c.obj -o cmTC_048f3.exe -Wl,--out-implib,libcmTC_048f3.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
+      - "vendor/assimp/contrib/zlib/CMakeLists.txt:64 (check_function_exists)"
+    checks:
+      - "Looking for fseeko"
+    directories:
+      source: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eujyrz"
+      binary: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eujyrz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Roger2/Documents/programming/opengl-tutorial/vendor/assimp/cmake-modules"
+    buildResult:
+      variable: "HAVE_FSEEKO"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eujyrz'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -v cmTC_4a448
+        [1/2] C:\\msys64\\mingw64\\bin\\cc.exe   -fno-strict-aliasing -fPIC  -DCHECK_FUNCTION_EXISTS=fseeko -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_4a448.dir/CheckFunctionExists.c.obj -c C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-eujyrz/CheckFunctionExists.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\msys64\\mingw64\\bin\\cc.exe -fno-strict-aliasing -fPIC  -DCHECK_FUNCTION_EXISTS=fseeko  CMakeFiles/cmTC_4a448.dir/CheckFunctionExists.c.obj -o cmTC_4a448.exe -Wl,--out-implib,libcmTC_4a448.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/JetBrains/CLion 2024.1.3/bin/cmake/win/x64/share/cmake-3.28/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "vendor/assimp/contrib/zlib/CMakeLists.txt:72 (check_include_file)"
+    checks:
+      - "Looking for unistd.h"
+    directories:
+      source: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9p3hro"
+      binary: "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9p3hro"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -fPIC "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/Users/Roger2/Documents/programming/opengl-tutorial/vendor/assimp/cmake-modules"
+    buildResult:
+      variable: "Z_HAVE_UNISTD_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9p3hro'
+        
+        Run Build Command(s): "C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -v cmTC_70a4f
+        [1/2] C:\\msys64\\mingw64\\bin\\cc.exe   -fno-strict-aliasing -fPIC   -std=gnu99 -fdiagnostics-color=always -o CMakeFiles/cmTC_70a4f.dir/CheckIncludeFile.c.obj -c C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-9p3hro/CheckIncludeFile.c
+        [2/2] C:\\Windows\\system32\\cmd.exe /C "cd . && C:\\msys64\\mingw64\\bin\\cc.exe -fno-strict-aliasing -fPIC  CMakeFiles/cmTC_70a4f.dir/CheckIncludeFile.c.obj -o cmTC_70a4f.exe -Wl,--out-implib,libcmTC_70a4f.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+...

@@ -1,0 +1,312 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						3
+					]
+				},
+				{
+					"build" : "vendor/assimp",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.assimp-Debug-87db3cfa2a65251fb380.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "vendor/assimp",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "vendor/assimp/contrib/zlib",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.assimp.contrib.zlib-Debug-a013c96d61542c766cc6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "vendor/assimp/contrib/zlib",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "vendor/assimp/code",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.assimp.code-Debug-7819571e09d3b9b672c8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "vendor/assimp/code",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "vendor/assimp/test",
+					"childIndexes" : 
+					[
+						5
+					],
+					"jsonFile" : "directory-vendor.assimp.test-Debug-93fa2b2ee4c9cbe7d3d1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "vendor/assimp/test",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "vendor/assimp/test/headercheck",
+					"jsonFile" : "directory-vendor.assimp.test.headercheck-Debug-e8ec805d71236be3d2e6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "vendor/assimp/test/headercheck"
+				},
+				{
+					"build" : "vendor/glfw",
+					"childIndexes" : 
+					[
+						7,
+						8
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.glfw-Debug-1e1bbddf5c83a7a5751b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "vendor/glfw"
+				},
+				{
+					"build" : "vendor/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.glfw.src-Debug-f82d9df15096aba6a4c7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 3,
+					"source" : "vendor/glfw/src",
+					"targetIndexes" : 
+					[
+						4,
+						7
+					]
+				},
+				{
+					"build" : "vendor/glfw/docs",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-vendor.glfw.docs-Debug-9736d65e90f5e4746c0f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 3,
+					"source" : "vendor/glfw/docs",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "OpenGLTutorial",
+					"targetIndexes" : 
+					[
+						0,
+						3
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						1,
+						3,
+						4,
+						5
+					],
+					"name" : "Assimp",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						5,
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "zlib",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6,
+						7,
+						8
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						4,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "OpenGLTutorial::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-OpenGLTutorial-Debug-8c44deb02c3ba2bb86e5.json",
+					"name" : "OpenGLTutorial",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "assimp::@73aa4729bf46b0baaf8e",
+					"jsonFile" : "target-assimp-Debug-be45190561203f1ac1fe.json",
+					"name" : "assimp",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "docs::@e20363e25641143920c9",
+					"jsonFile" : "target-docs-Debug-3deee93c9eddfe0c1162.json",
+					"name" : "docs",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "glad::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-glad-Debug-a51b649d8920632d6a6d.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "glfw::@31bd9730e6b8c71cc656",
+					"jsonFile" : "target-glfw-Debug-bf9332dac85319cdad44.json",
+					"name" : "glfw",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@c4807781decb42661c27",
+					"jsonFile" : "target-uninstall-Debug-326488fc17a035297d8a.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "unit::@e249f26fae82ad9754c3",
+					"jsonFile" : "target-unit-Debug-c24dbcf0b2352633e4e1.json",
+					"name" : "unit",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "update_mappings::@31bd9730e6b8c71cc656",
+					"jsonFile" : "target-update_mappings-Debug-cb7b1b12c7d516c22cfb.json",
+					"name" : "update_mappings",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "zlibstatic::@a88bd8d5fa47d82f67fc",
+					"jsonFile" : "target-zlibstatic-Debug-c4f28510238e2595d84b.json",
+					"name" : "zlibstatic",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug",
+		"source" : "C:/Users/Roger2/Documents/programming/opengl-tutorial"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

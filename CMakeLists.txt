@@ -11,6 +11,7 @@ add_library(glad vendor/glad/src/glad.c)
 target_include_directories(glad PUBLIC vendor/glad/include)
 
 # Add GLFW library
+add_subdirectory(vendor/assimp)
 add_subdirectory(vendor/glfw)
 # GLFW's CMakeLists.txt should properly define a target named glfw or glfw3
 
@@ -19,7 +20,9 @@ include_directories(includes)
 
 # Add the executable
 add_executable(OpenGLTutorial src/main.cpp src/Shader.cpp src/stb_image.cpp
-        src/Mesh.cpp)
+        src/Mesh.cpp
+        src/Model.cpp
+        src/Model.h)
 
 # Include directories for the main project
 target_include_directories(OpenGLTutorial PRIVATE vendor/glad/include includes vendor/glfw/include)

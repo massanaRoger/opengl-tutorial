@@ -1,5 +1,13 @@
 "C:\Program Files\JetBrains\CLion 2024.1.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2024.1.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\Roger2\Documents\programming\opengl-tutorial -B C:\Users\Roger2\Documents\programming\opengl-tutorial\cmake-build-debug
+-- Shared libraries disabled
+-- compiling zlib from sources
+-- Applying MinGW StepFileGen1.cpp Debug Workaround
+-- Enabled importer formats: AMF 3DS AC ASE ASSBIN B3D BVH COLLADA DXF CSM HMP IRRMESH IQM IRR LWO LWS M3D MD2 MD3 MD5 MDC MDL NFF NDO OFF OBJ OGRE OPENGEX PLY MS3D COB BLEND IFC XGL FBX Q3D Q3BSP RAW SIB SMD STL TERRAGEN 3D X X3D GLTF 3MF MMD
+-- Disabled importer formats:
+-- Enabled exporter formats: OBJ OPENGEX PLY 3DS ASSBIN ASSXML M3D COLLADA FBX STL X X3D GLTF 3MF PBRT ASSJSON STEP
+-- Disabled exporter formats:
+-- Treating all warnings as errors (for assimp library only)
 -- Including Win32 support
--- Configuring done (0.2s)
--- Generating done (0.0s)
+-- Configuring done (0.3s)
+-- Generating done (0.1s)
 -- Build files have been written to: C:/Users/Roger2/Documents/programming/opengl-tutorial/cmake-build-debug

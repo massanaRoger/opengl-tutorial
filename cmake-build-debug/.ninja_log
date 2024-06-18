@@ -1,17 +1,18 @@
 # ninja log v6
 11	1050	7404301025779298	vendor/glfw/src/CMakeFiles/glfw.dir/platform.c.obj	44b0c4c37d5b223c
+1108	2031	7404301036745062	vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj	452676db1c0cbba7
+9	1119	7404301025759291	vendor/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj	1aaa605b1ce51c73
+3	1290	7404301025699316	CMakeFiles/glad.dir/vendor/glad/src/glad.c.obj	7d5e15086b778942
+17	1124	7404301025839297	vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj	ad49f3c248b6f60f
 12	1073	7404301025799300	vendor/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj	efa81f2f54aa7fd
 19	1086	7404301025859306	vendor/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj	1ac3efa809be22b0
 5	1105	7404301025719288	vendor/glfw/src/CMakeFiles/glfw.dir/context.c.obj	f05b5f4e15a7cfd8
 6	1108	7404301025729286	vendor/glfw/src/CMakeFiles/glfw.dir/init.c.obj	c91b434feb0261e4
-9	1119	7404301025759291	vendor/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj	1aaa605b1ce51c73
-17	1124	7404301025839297	vendor/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj	ad49f3c248b6f60f
+2034	2699	7404301046011563	CMakeFiles/OpenGLTutorial.dir/src/main.cpp.obj	4b8c53d66946a03b
 14	1190	7404301025809285	vendor/glfw/src/CMakeFiles/glfw.dir/window.c.obj	5f6e4ba156f0d7e8
 7	1235	7404301025749282	vendor/glfw/src/CMakeFiles/glfw.dir/input.c.obj	ff3b1eddeacd5754
-3	1290	7404301025699316	CMakeFiles/glad.dir/vendor/glad/src/glad.c.obj	7d5e15086b778942
 1053	2005	7404301036205073	vendor/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj	ffddbd26fd0acf45
 1074	2021	7404301036405078	vendor/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj	256237acba9838d6
-1108	2031	7404301036745062	vendor/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj	452676db1c0cbba7
 1105	2034	7404301036725058	vendor/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj	36e240410b8dda45
 1119	2079	7404301036865073	vendor/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj	2069f241d68269ff
 1125	2100	7404301036915071	vendor/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj	db339d1a7f914514
@@ -21,12 +22,9 @@
 1235	2222	7404301038015068	vendor/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj	2d7f9953575dbfd8
 1291	2249	7404301038575075	vendor/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj	8bec4d5b1ee7b240
 2079	2617	7404301046460428	CMakeFiles/OpenGLTutorial.dir/src/Shader.cpp.obj	4a14e7e575112745
-2104	2680	7404301046710437	CMakeFiles/OpenGLTutorial.dir/src/Mesh.cpp.obj	af307be88a5c40ba
-2034	2699	7404301046011563	CMakeFiles/OpenGLTutorial.dir/src/main.cpp.obj	4b8c53d66946a03b
+7	441	7404301407912578	CMakeFiles/OpenGLTutorial.dir/src/Mesh.cpp.obj	af307be88a5c40ba
 2021	2791	7404301045881561	vendor/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj	b510aa6f9ca46ded
 2100	2794	7404301046670434	CMakeFiles/OpenGLTutorial.dir/src/stb_image.cpp.obj	57ad96899ef61850
 2005	2882	7404301045721557	vendor/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj	611612410ef0520a
 2882	2944	7404301054490426	vendor/glfw/src/libglfw3.a	92b5edd75b60f4b6
-2944	3080	7404301055120419	OpenGLTutorial.exe	4d416f7e4ca29fe2
-7	441	7404301407912578	CMakeFiles/OpenGLTutorial.dir/src/Mesh.cpp.obj	af307be88a5c40ba
 441	552	7404301412252568	OpenGLTutorial.exe	4d416f7e4ca29fe2
